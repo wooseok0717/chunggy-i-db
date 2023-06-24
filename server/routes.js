@@ -22,4 +22,20 @@ router.put('/', controllers.items.updateItem);
 // delete item with given item number(name)
 router.delete('/', controllers.items.deleteItem);
 
+// ***************** SETS *****************
+// get a single set details with set id
+router.get('/set', controllers.sets.getSetWithId);
+
+// get list of sets with input
+router.get('/sets', controllers.sets.getSetsWithName);
+
+// create new set with given form
+router.post('/set', controllers.sets.createASet);
+
+// update a set with given details and id
+router.put('/set', controllers.sets.updateASet);
+
+// delete a set with given id
+router.delete('/set', controllers.sets.deleteASet);
+
 module.exports = router;
