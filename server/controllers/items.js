@@ -1,5 +1,8 @@
+const models = require('../models')
+
 module.exports = {
   getItemWithNumber: (req, res) => {
+    models.items.getSomething();
     res.send(`${req.query.itemNumber} is the number`); // query items/number/?itemNumber=1111111
   },
   getItemWithName: (req, res) => {
