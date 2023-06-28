@@ -3,9 +3,11 @@ const models = require('../models')
 module.exports = {
   getItemWithNumber: (req, res) => {
     models.items.getSomething();
+    console.log('items line 6', req.query.itemNumber)
     res.send(`${req.query.itemNumber} is the number`); // query items/number/?itemNumber=1111111
   },
   getItemWithName: (req, res) => {
+    console.log(req.query.itemName)
     res.send(`${req.body.itemName} is the name`);
   },
   filterItems: (req, res) => {

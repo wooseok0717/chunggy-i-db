@@ -35,3 +35,16 @@ CREATE index set_id_idx on items(set_id);
 CREATE index creator_idx on items(creator);
 CREATE index total_stats_idx on items(total_stats);
 CREATE index korean_name_idx on items(korean_name);
+
+CREATE TABLE sets (
+  id SERIAL PRIMARY NOT NULL,
+  name TEXT,
+  level_one_req INTEGER,
+  level_two_req INTEGER,
+  level_one_stat JSON,
+  level_two_stat JSON,
+  hidden_effect JSON
+);
+
+CREATE index set_id_idx on sets(id);
+CREATE index set_name_idx on sets(name);
