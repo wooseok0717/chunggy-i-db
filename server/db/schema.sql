@@ -43,7 +43,9 @@ CREATE TABLE sets (
   level_two_req INTEGER,
   level_one_stat JSON,
   level_two_stat JSON,
-  hidden_effect JSON
+  hidden_effect JSON,
+  created_at TEXT,
+  creator TEXT
 );
 
 CREATE index set_id_idx on sets(id);
