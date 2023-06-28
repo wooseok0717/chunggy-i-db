@@ -1,3 +1,5 @@
+const models = require('../models');
+
 module.exports = {
   getSetWithId: (req, res) => {
     console.log(req.query.setId);
@@ -9,7 +11,14 @@ module.exports = {
   },
   createASet: (req, res) => {
     console.log(req.body);
-    res.send('created?');
+    const {
+      name, stageOne, stageOneReq, stageTwo, stageTwoReq,
+      hiddenEffect, hiddenReq
+    } = req.body;
+    const now = new Date();
+    models.sets.createASet(name, stageOne, stageOneReq, stageTwo, stageTwoReq, hiddenEffect, hiddenReq, now, 'josh',() => {
+      res.sendStatus(200);
+    })
   },
   updateASet: (req, res) => {
     console.log(req.body);
