@@ -6,8 +6,9 @@ module.exports = {
     res.send(`setId you requested for is ${req.query.setId}`);
   },
   getSetsWithName: (req, res) => {
-    console.log(req.body.setName);
-    res.send(`set name you searched for is ${req.body.setName}`)
+    models.sets.getSetsWithName(req.params.setName, (data) => {
+      res.send(data);
+    })
   },
   createASet: (req, res) => {
     console.log(req.body);

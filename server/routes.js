@@ -27,7 +27,7 @@ router.delete('/', controllers.items.deleteItem);
 router.get('/set', controllers.sets.getSetWithId);
 
 // get list of sets with input
-router.get('/sets', controllers.sets.getSetsWithName);
+router.get('/sets/:setName/', controllers.sets.getSetsWithName);
 
 // create new set with given form
 router.post('/set', controllers.sets.createASet);

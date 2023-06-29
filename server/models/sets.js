@@ -6,5 +6,10 @@ module.exports= {
     const values = [name, stage1Req, stage2Req, stage1, stage2, hiddenReq, hiddenEffect, createdAt, creator];
     db.query(text, values);
     cb();
+  },
+  getSetsWithName: (input, cb) => {
+    console.log(input);
+    db.query(`SELECT * FROM sets WHERE name LIKE '%${input}%'`)
+    .then(res => cb(res.rows));
   }
 }
