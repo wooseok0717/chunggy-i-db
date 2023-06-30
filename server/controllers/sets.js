@@ -21,6 +21,15 @@ module.exports = {
       res.sendStatus(200);
     })
   },
+  verify: (req, res) => {
+    models.sets.verify(req.query.nameInput, (rows) => {
+      if (rows) {
+        res.send(true);
+      } else {
+        res.send(false);
+      }
+    })
+  },
   updateASet: (req, res) => {
     console.log(req.body);
     res.send('updated?');

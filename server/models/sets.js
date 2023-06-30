@@ -11,5 +11,12 @@ module.exports= {
     console.log(input);
     db.query(`SELECT * FROM sets WHERE name LIKE '%${input}%'`)
     .then(res => cb(res.rows));
+  },
+  verify: (input, cb) => {
+    console.log(input)
+    db.query(`SELECT * FROM sets WHERE name = '${input}'`)
+    .then(res => {
+      cb(res.rows.length);
+    })
   }
 }

@@ -26,6 +26,9 @@ router.delete('/', controllers.items.deleteItem);
 // get a single set details with set id
 router.get('/set', controllers.sets.getSetWithId);
 
+// verify if the given set name is valid
+router.get('/sets/verify/', controllers.sets.verify)
+
 // get list of sets with input
 router.get('/sets/:setName/', controllers.sets.getSetsWithName);
 
