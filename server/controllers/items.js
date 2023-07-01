@@ -29,5 +29,10 @@ module.exports = {
     models.items.verifyByNumber(req.query.number, (data) => {
       res.send(data);
     });
+  },
+  verifyByName: (req, res) => {
+    models.items.verifyByName(req.query.name, (data) => {
+      res.send(data);
+    })
   }
 }

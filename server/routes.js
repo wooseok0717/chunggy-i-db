@@ -14,7 +14,10 @@ router.get('/name', controllers.items.getItemWithName);
 router.get('/filter', controllers.items.filterItems);
 
 // verify item by name
-router.get('/verify/number', controllers.items.verifyByNumber)
+router.get('/verify/number', controllers.items.verifyByNumber);
+
+// verify item by number
+router.get('/verify/name', controllers.items.verifyByName);
 
 // create new item with given form
 router.post('/', controllers.items.addItem);
