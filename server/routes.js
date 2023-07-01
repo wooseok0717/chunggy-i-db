@@ -13,6 +13,9 @@ router.get('/name', controllers.items.getItemWithName);
 // get all items with the given filter
 router.get('/filter', controllers.items.filterItems);
 
+// verify item by name
+router.get('/verify/number', controllers.items.verifyByNumber)
+
 // create new item with given form
 router.post('/', controllers.items.addItem);
 

@@ -24,5 +24,10 @@ module.exports = {
   },
   deleteItem: (req, res) => {
     res.send(`${req.query.itemNumber} is the number you deleted`); // query items/number/?itemNumber=1111111
+  },
+  verifyByNumber: (req, res) => {
+    models.items.verifyByNumber(req.query.number, (data) => {
+      res.send(data);
+    });
   }
 }
