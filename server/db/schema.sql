@@ -26,6 +26,7 @@ CREATE TABLE items (
   part TEXT NOT NULL,
   type TEXT,
   grade TEXT NOT NULL,
+  material TEXT,
   level INTEGER,
   line_one JSON,
   line_two JSON,
@@ -48,3 +49,11 @@ CREATE index item_name_idx on items(item_name);
 CREATE index set_id_idx on items(set_id);
 CREATE index creator_idx on items(creator);
 CREATE index korean_name_idx on items(korean_name);
+
+INSERT INTO items (
+  item_number, item_name, part, type, grade, level, creator
+  ) VALUES (
+    100200702, 'tahabata dagger', 'weapon', 'dagger', 'eternal', 50, 'chunggy'
+  );
+
+INSERT INTO sets (name) VALUES ('chunggy set');

@@ -23,11 +23,7 @@ module.exports = {
   },
   verify: (req, res) => {
     models.sets.verify(req.query.nameInput, (rows) => {
-      if (rows) {
-        res.send(true);
-      } else {
-        res.send(false);
-      }
+      res.send(rows);
     })
   },
   updateASet: (req, res) => {
