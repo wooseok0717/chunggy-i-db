@@ -12,5 +12,8 @@ module.exports = {
     .then(res => {
       cb(res.rows[0]);
     })
+  },
+  createAItem: () => {
+
   }
 }

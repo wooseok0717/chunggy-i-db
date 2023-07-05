@@ -15,7 +15,15 @@ module.exports = {
     res.send('here are your results!');
   },
   addItem: (req, res) => {
-    console.log(req.body);
+    models.items.createAItem();
+    const {
+      itemNumber, itemName, part, type, material, grade, level, lineOne, lineTwo,
+      conditionOne, conditionTwo, manastone, maxEnchant, setItem, currentUser,
+      abyss, korean
+    } = req.body;
+    console.log(itemNumber, itemName, part, type, material, grade, level, lineOne, lineTwo,
+      conditionOne, conditionTwo, manastone, maxEnchant, setItem, currentUser,
+      abyss, korean)
     res.send('created?');
   },
   updateItem: (req, res) => {
