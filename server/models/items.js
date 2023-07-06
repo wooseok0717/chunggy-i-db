@@ -13,7 +13,9 @@ module.exports = {
       cb(res.rows[0]);
     })
   },
-  createAItem: () => {
-
+  createAItem: (number, name, part, type, material, grade, level, line1, line2, condition1, condition2, manastone, enchant, setId, creator, created_at, abyss, total, korean) => {
+    const text = 'INSERT INTO items (item_number, item_name, part, type, grade, material, level, line_one, line_two, manastones, condition_one, condition_two, max_enchant, set_id, creator, created_at, abyss, total_stats, korean_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)';
+    const values = [number, name, part, type, grade, material, level, line1, line2, manastone, condition1, condition2, enchant, setId, creator, created_at, abyss, total, korean];
+    db.query(text, values)
   }
 }

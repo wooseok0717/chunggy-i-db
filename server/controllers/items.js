@@ -15,15 +15,33 @@ module.exports = {
     res.send('here are your results!');
   },
   addItem: (req, res) => {
-    models.items.createAItem();
+    for (key in req.body) {
+      if (req.body[key] === undefined) {
+        req.body[key] = null;
+      }
+    }
+    const total = {};
+    const addToTotal = (obj) => {
+      for (let key in obj) {
+        if (typeof obj[key] === 'object') {
+          total[key] = obj[key];
+        } else if (total[key] === undefined) {
+          total[key] = Number(obj[key]);
+        } else {
+          total[key] += Number(obj[key]);
+        }
+      }
+    }
+    addToTotal(req.body.lineOne);
+    addToTotal(req.body.lineTwo);
+    addToTotal(req.body.conditionOne);
+    addToTotal(req.body.conditionTwo);
     const {
       itemNumber, itemName, part, type, material, grade, level, lineOne, lineTwo,
       conditionOne, conditionTwo, manastone, maxEnchant, setItem, currentUser,
       abyss, korean
     } = req.body;
-    console.log(itemNumber, itemName, part, type, material, grade, level, lineOne, lineTwo,
-      conditionOne, conditionTwo, manastone, maxEnchant, setItem, currentUser,
-      abyss, korean)
+    models.items.createAItem(itemNumber, itemName, part, type, material, grade, level, lineOne, lineTwo, conditionOne, conditionTwo, manastone, maxEnchant, setItem, currentUser, Date.now(), abyss, total, korean);
     res.send('created?');
   },
   updateItem: (req, res) => {
