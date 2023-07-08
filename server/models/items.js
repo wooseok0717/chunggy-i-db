@@ -18,13 +18,13 @@ module.exports = {
     const values = [number, name, part, type, grade, material, level, line1, line2, manastone, condition1, condition2, enchant, setId, creator, created_at, abyss, total, korean];
     db.query(text, values)
   },
-  getItems: (part, type, grades, input, cb) => {
+  getItems: (part, type, grades, input, filter, cb) => {
     const andConditions = [
       { column: 'part', value: part },
       { column: 'type', value: type },
     ];
-    const orConditions = [];
 
+    const orConditions = [];
     grades.forEach(grade => {
       orConditions.push({ column: 'grade', value: grade});
     })
@@ -46,11 +46,12 @@ module.exports = {
             .join(' OR ')
         })
         AND item_name LIKE '%' || $${andConditions.length + orConditions.length + 1} || '%'
+        ORDER BY (total_stats ->> $${andConditions.length + orConditions.length + 2})::float DESC
       `,
       values: [
         ...andConditions.map(condition => condition.value),
         ...orConditions.map(condition => condition.value),
-        substringValue
+        substringValue, filter
       ],
     };
 

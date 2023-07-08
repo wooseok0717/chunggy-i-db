@@ -49,10 +49,4 @@ CREATE index set_id_idx on items(set_id);
 CREATE index creator_idx on items(creator);
 CREATE index korean_name_idx on items(korean_name);
 
-INSERT INTO items (
-  item_number, item_name, part, type, grade, level, creator,line_one
-  ) VALUES (
-    100200702, 'tahabata dagger', 'weapon', 'dagger', 'eternal', 50, 'chunggy','{"attack":{"min":30,"max":40}}'
-  );
-
 INSERT INTO sets (name) VALUES ('chunggy set');
