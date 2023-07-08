@@ -12,8 +12,8 @@ module.exports = {
   },
   getItems: (req, res) => {
     const {part, type, grades, input} = req.query
-    models.items.getItems(part, type, grades, input, () => {
-      res.send('hello')
+    models.items.getItems(part, type, grades, input, (rows) => {
+      res.send(rows)
     });
   },
   filterItems: (req, res) => {

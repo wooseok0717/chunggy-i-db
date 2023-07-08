@@ -19,8 +19,6 @@ module.exports = {
     db.query(text, values)
   },
   getItems: (part, type, grades, input, cb) => {
-    cb();
-
     const andConditions = [
       { column: 'part', value: part },
       { column: 'type', value: type },
@@ -35,7 +33,7 @@ module.exports = {
 
     let query = {
       text: `
-        SELECT item_name
+        SELECT *
         FROM items
         WHERE ${
           andConditions
@@ -57,6 +55,6 @@ module.exports = {
     };
 
     db.query(query)
-    .then(res => console.log(res.rows))
+    .then(res => cb(res.rows))
   }
 }
