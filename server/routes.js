@@ -7,6 +7,9 @@ const controllers = require('./controllers')
 // get a single item details with item number
 router.get('/number', controllers.items.getItemWithNumber);
 
+// get all items with param filter
+router.get('/', controllers.items.getItems);
+
 // get a single item details with item name
 router.get('/name', controllers.items.getItemWithName);
 

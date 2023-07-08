@@ -10,6 +10,12 @@ module.exports = {
     console.log(req.query.itemName)
     res.send(`${req.body.itemName} is the name`);
   },
+  getItems: (req, res) => {
+    const {part, type, grades, input} = req.query
+    models.items.getItems(part, type, grades, input, () => {
+      res.send('hello')
+    });
+  },
   filterItems: (req, res) => {
     console.log(req.body);
     res.send('here are your results!');

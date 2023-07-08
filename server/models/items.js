@@ -17,5 +17,46 @@ module.exports = {
     const text = 'INSERT INTO items (item_number, item_name, part, type, grade, material, level, line_one, line_two, manastones, condition_one, condition_two, max_enchant, set_id, creator, created_at, abyss, total_stats, korean_name) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19)';
     const values = [number, name, part, type, grade, material, level, line1, line2, manastone, condition1, condition2, enchant, setId, creator, created_at, abyss, total, korean];
     db.query(text, values)
+  },
+  getItems: (part, type, grades, input, cb) => {
+    cb();
+
+    const andConditions = [
+      { column: 'part', value: part },
+      { column: 'type', value: type },
+    ];
+    const orConditions = [];
+
+    grades.forEach(grade => {
+      orConditions.push({ column: 'grade', value: grade});
+    })
+    const substringColumn = 'item_name';
+    const substringValue = input;
+
+    let query = {
+      text: `
+        SELECT item_name
+        FROM items
+        WHERE ${
+          andConditions
+            .map((condition, index) => `(${condition.column} = $${index + 1})`)
+            .join(' AND ')
+        }
+        AND (${
+          orConditions
+            .map((condition, index) => `(${condition.column} = $${andConditions.length + index + 1})`)
+            .join(' OR ')
+        })
+        AND item_name LIKE '%' || $${andConditions.length + orConditions.length + 1} || '%'
+      `,
+      values: [
+        ...andConditions.map(condition => condition.value),
+        ...orConditions.map(condition => condition.value),
+        substringValue
+      ],
+    };
+
+    db.query(query)
+    .then(res => console.log(res.rows))
   }
 }
