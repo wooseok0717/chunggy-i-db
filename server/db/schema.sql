@@ -1,6 +1,9 @@
 COPY items TO '/Users/wooseokjang/Desktop/chunggysimulator/chunggy-i-db/server/csv/items.csv'  DELIMITER ',' NULL AS 'null' CSV HEADER;
 COPY sets TO '/Users/wooseokjang/Desktop/chunggysimulator/chunggy-i-db/server/csv/sets.csv'  DELIMITER ',' NULL AS 'null' CSV HEADER;
 
+CREATE DATABASE josh;
+\c josh;
+
 DROP DATABASE IF EXISTS chunggyitems;
 CREATE DATABASE chunggyitems;
 
