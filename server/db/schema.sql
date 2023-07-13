@@ -1,3 +1,5 @@
+COPY items TO '/Users/wooseokjang/Desktop/chunggysimulator/chunggy-i-db/server/csv/items.csv'  DELIMITER ',' NULL AS 'null' CSV HEADER;
+
 DROP DATABASE IF EXISTS chunggyitems;
 CREATE DATABASE chunggyitems;
 
@@ -26,21 +28,25 @@ CREATE TABLE items (
   part TEXT NOT NULL,
   type TEXT,
   grade TEXT NOT NULL,
-  material TEXT,
-  level INTEGER,
+  material TEXT DEFAULT NULL,
+  level INTEGER DEFAULT NULL,
   line_one JSON,
   line_two JSON,
   manastones JSON,
   condition_one JSON,
   condition_two JSON,
-  max_enchant INTEGER,
-  set_id INTEGER REFERENCES sets (id),
+  max_enchant INTEGER DEFAULT NULL,
+  set_id INTEGER REFERENCES sets (id) DEFAULT NULL,
   creator TEXT NOT NULL,
   created_at TEXT,
   abyss JSON,
   total_stats JSON,
-  korean_name TEXT
+  korean_name TEXT DEFAULT NULL
 );
+
+COPY items
+  FROM '/Users/wooseokjang/Desktop/chunggysimulator/chunggy-i-db/server/csv/items.csv'
+  DELIMITER ',' NULL AS 'null' CSV HEADER;
 
 CREATE index id_idx on items(id);
 CREATE index item_number_idx on items(item_number);
@@ -48,5 +54,3 @@ CREATE index item_name_idx on items(item_name);
 CREATE index set_id_idx on items(set_id);
 CREATE index creator_idx on items(creator);
 CREATE index korean_name_idx on items(korean_name);
-
-INSERT INTO sets (name) VALUES ('chunggy set');
