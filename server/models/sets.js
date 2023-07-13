@@ -8,15 +8,17 @@ module.exports= {
     cb();
   },
   getSetsWithName: (input, cb) => {
-    console.log(input);
-    db.query(`SELECT * FROM sets WHERE name LIKE '%${input}%'`)
+    const text = `SELECT * FROM sets WHERE name LIKE '%${input}%'`
+    db.query(text)
     .then(res => cb(res.rows));
   },
   verify: (input, cb) => {
-    console.log(input)
-    db.query(`SELECT * FROM sets WHERE name = '${input}'`)
+    const text = 'SELECT * FROM sets WHERE name = $1'
+    const values = [input]
+    db.query(text,values)
     .then(res => {
       cb(res.rows[0]);
     })
+    // db.query(`SELECT * FROM sets WHERE name = '${input}'`)
   }
 }

@@ -1,6 +1,0 @@
-id,item_number,item_name,part,type,grade,material,level,line_one,line_two,manastones,condition_one,condition_two,max_enchant,set_id,creator,created_at,abyss,total_stats,korean_name
-1,125000873,adamantium chain helm,accessary,headgear,common,,33,{},{},{},{},{},null,null,wjang717@gmail.com,1689209368308,{},{},null
-2,12345,testtwo,weapon,chainsword,superior,null,null,{},{},{},{},{},null,null,wjang717@gmail.com,1689210086849,{},{},null
-3,4562,test4,armor,shoulder,superior,cloth,null,{},{},{},{},{},null,null,wjang717@gmail.com,1689210133422,{},{},null
-4,45681,eowrk,weapon,chainsword,heroic,null,null,{},{},{},{},{},null,null,wjang717@gmail.com,1689210164466,{},{},null
-5,40569,chunggy,weapon,bow,common,null,null,{},{},{},{},{},null,null,wjang717@gmail.com,1689210344580,{},{},null

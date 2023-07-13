@@ -1,4 +1,5 @@
 COPY items TO '/Users/wooseokjang/Desktop/chunggysimulator/chunggy-i-db/server/csv/items.csv'  DELIMITER ',' NULL AS 'null' CSV HEADER;
+COPY sets TO '/Users/wooseokjang/Desktop/chunggysimulator/chunggy-i-db/server/csv/sets.csv'  DELIMITER ',' NULL AS 'null' CSV HEADER;
 
 DROP DATABASE IF EXISTS chunggyitems;
 CREATE DATABASE chunggyitems;
@@ -20,6 +21,11 @@ CREATE TABLE sets (
 
 CREATE index set_idx on sets(id);
 CREATE index set_name_idx on sets(name);
+
+COPY sets
+  FROM '/Users/wooseokjang/Desktop/chunggysimulator/chunggy-i-db/server/csv/sets.csv'
+  DELIMITER ',' NULL AS 'null' CSV HEADER;
+ALTER SEQUENCE sets_id_seq RESTART WITH 100000000;
 
 CREATE TABLE items (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -44,13 +50,14 @@ CREATE TABLE items (
   korean_name TEXT DEFAULT NULL
 );
 
-COPY items
-  FROM '/Users/wooseokjang/Desktop/chunggysimulator/chunggy-i-db/server/csv/items.csv'
-  DELIMITER ',' NULL AS 'null' CSV HEADER;
-
 CREATE index id_idx on items(id);
 CREATE index item_number_idx on items(item_number);
 CREATE index item_name_idx on items(item_name);
 CREATE index set_id_idx on items(set_id);
 CREATE index creator_idx on items(creator);
 CREATE index korean_name_idx on items(korean_name);
+
+COPY items
+  FROM '/Users/wooseokjang/Desktop/chunggysimulator/chunggy-i-db/server/csv/items.csv'
+  DELIMITER ',' NULL AS 'null' CSV HEADER;
+ALTER SEQUENCE items_id_seq RESTART WITH 100000000;
