@@ -11,7 +11,6 @@ module.exports = {
     })
   },
   createASet: (req, res) => {
-    console.log(req.body);
     const {
       name, stageOne, stageOneReq, stageTwo, stageTwoReq,
       hiddenEffect, hiddenReq
@@ -27,11 +26,9 @@ module.exports = {
     })
   },
   updateASet: (req, res) => {
-    console.log(req.body);
     res.send('updated?');
   },
   deleteASet: (req, res) => {
-    console.log(req.query.setId);
     res.send('deleted?');
   },
 }
