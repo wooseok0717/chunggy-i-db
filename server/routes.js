@@ -33,7 +33,7 @@ router.delete('/', controllers.items.deleteItem);
 
 // ***************** SETS *****************
 // get a single set details with set id
-router.get('/set', controllers.sets.getSetWithId);
+router.get('/set/id', controllers.sets.getSetWithId);
 
 // verify if the given set name is valid
 router.get('/sets/verify/', controllers.sets.verify)

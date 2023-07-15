@@ -19,6 +19,9 @@ module.exports= {
     .then(res => {
       cb(res.rows[0]);
     })
-    // db.query(`SELECT * FROM sets WHERE name = '${input}'`)
+  },
+  getSetWithId: (id, cb) => {
+    db.query(`SELECT * FROM sets WHERE id = ${id}`)
+    .then(({rows}) => cb(rows[0]));
   }
 }

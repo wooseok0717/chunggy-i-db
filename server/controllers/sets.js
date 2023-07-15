@@ -2,8 +2,9 @@ const models = require('../models');
 
 module.exports = {
   getSetWithId: (req, res) => {
-    console.log(req.query.setId);
-    res.send(`setId you requested for is ${req.query.setId}`);
+    models.sets.getSetWithId(req.query.setId, (data) => {
+      res.send(data);
+    });
   },
   getSetsWithName: (req, res) => {
     models.sets.getSetsWithName(req.params.setName, (data) => {
