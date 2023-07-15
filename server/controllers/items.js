@@ -66,5 +66,10 @@ module.exports = {
     models.items.verifyByName(req.query.name, (data) => {
       res.send(data);
     })
+  },
+  getBySetId:(req, res) => {
+    models.items.getBySetId(req.query.setId, (data) => {
+      res.send(data);
+    })
   }
 }

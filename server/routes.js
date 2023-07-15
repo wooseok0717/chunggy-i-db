@@ -22,6 +22,9 @@ router.get('/verify/number', controllers.items.verifyByNumber);
 // verify item by number
 router.get('/verify/name', controllers.items.verifyByName);
 
+// get items with set id
+router.get('/setItems', controllers.items.getBySetId);
+
 // create new item with given form
 router.post('/', controllers.items.addItem);
 
